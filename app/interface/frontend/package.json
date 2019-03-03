@@ -1,0 +1,61 @@
+{
+    "name": "interface",
+    "version": "0.1.0",
+    "description": "A Django/Vue.js Setup",
+    "author": "__other__ <ministry@scopal-affairs.com>",
+    "license": "MIT",
+    "private": true,
+    "repository": "https://bitbucket.org/__other__/flask_data_science/src/master/",
+    "scripts": {
+        "serve": "vue-cli-service serve",
+        "build": "vue-cli-service build",
+        "build:css": "tailwind build ./src/assets/css/tailwind.css -c ./tailwind.js -o ./dist/assets/css/screen.css",
+        "lint": "vue-cli-service lint",
+        "test:e2e": "vue-cli-service test:e2e",
+        "test:unit": "vue-cli-service test:unit"
+    },
+    "dependencies": {
+        "axios": "^0.18.0",
+        "d3": "^5.9.1",
+        "moment": "^2.24.0",
+        "truncate": "^2.0.1",
+        "register-service-worker": "^1.5.2",
+        "vue": "^2.6.6",
+        "vue-router": "^3.0.1",
+        "vuex": "^3.0.1"
+    },
+    "devDependencies": {
+        "@vue/cli-plugin-babel": "^3.4.0",
+        "@vue/cli-plugin-e2e-nightwatch": "^3.4.0",
+        "@vue/cli-plugin-eslint": "^3.4.0",
+        "@vue/cli-plugin-pwa": "^3.4.0",
+        "@vue/cli-plugin-unit-jest": "^3.4.0",
+        "@vue/cli-service": "^3.4.0",
+        "@vue/test-utils": "^1.0.0-beta.20",
+        "babel-core": "7.0.0-bridge.0",
+        "babel-eslint": "^10.0.1",
+        "babel-jest": "^23.6.0",
+        "eslint": "^5.8.0",
+        "eslint-plugin-vue": "^5.0.0",
+        "lint-staged": "^8.1.0",
+        "node-sass": "^4.11.0",
+        "postcss": "^7.0.14",
+        "postcss-loader": "^3.0.0",
+        "sass-loader": "^7.1.0",
+        "tailwindcss": "^0.7.4",
+        "vue-template-compiler": "^2.5.21"
+    },
+    "gitHooks": {
+        "pre-commit": "lint-staged"
+    },
+    "lint-staged": {
+        "*.js": [
+            "vue-cli-service lint",
+            "git add"
+        ],
+        "*.vue": [
+            "vue-cli-service lint",
+            "git add"
+        ]
+    }
+}

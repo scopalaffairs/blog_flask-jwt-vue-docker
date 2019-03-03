@@ -1,0 +1,7 @@
+@tailwind preflight;
+@tailwind components;
+@tailwind utilities;
+
+@import '../../assets/css/components/accordion.css';
+@import '../../assets/css/components/forms.css';
+@import '../../assets/css/components/tag-input.css';

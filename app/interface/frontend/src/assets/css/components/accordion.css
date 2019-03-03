@@ -1,0 +1,50 @@
+/*====================================================================*/
+/*
+	Accordion Component Style
+	__dh__
+*/
+/*====================================================================*/
+
+.accordion-list {
+  border-width: 1px;
+  -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+.accordion-item {
+  border-bottom-width: 1px;
+}
+.accordion-item:last-child {
+  border-bottom-width: 0;
+}
+.accordion-item-header {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-weight: 600;
+  padding: 1rem 1.5rem;
+}
+.accordion-item-body {
+  color: #606f7b;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  border-top-width: 1px;
+  padding: 1rem 1.5rem;
+}
+
+.icon {
+  height: 1rem;
+  width: 1rem;
+  fill: currentColor;
+  color: #8795a1;
+}

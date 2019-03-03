@@ -1,0 +1,25 @@
+/*====================================================================*/
+/*
+	Forms Component Style
+	__dh__
+*/
+/*====================================================================*/
+
+.form-input {
+  display: block;
+  width: 100%;
+  color: #22292f;
+  border-width: 1px;
+  border-radius: 0.25rem;
+  padding: 0.5rem 1rem;
+}
+.form-input:focus {
+  outline: 0;
+  -webkit-box-shadow: 0 0 0 3px rgba(52, 144, 220, 0.5);
+  box-shadow: 0 0 0 3px rgba(52, 144, 220, 0.5);
+}
+.form-label {
+  display: block;
+  color: #606f7b;
+  font-weight: 600;
+}
