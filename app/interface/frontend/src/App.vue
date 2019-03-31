@@ -1,21 +1,15 @@
 <template>
     <div class="bg-grey-light">
-        <Navigation></Navigation>
-        <div class="mx-auto px-4">
-            <div class="min-h-screen bg-white p-8">
-                <div class="max-w-xl mx-auto">
-                    <router-view/>
-                </div>
-            </div>
-        </div>
+        <Blog></Blog>
     </div>
 </template>
 <script>
-    import Navigation from "./views/templates/menu/Navigation"
-    import Card from "./views/templates/molecules/Card.vue"
+    import Blog from "./views/Blog"
 
     export default {
-        components: {Card, Navigation}
+        components: {
+            Blog
+        }
     }
 </script>
 
@@ -27,8 +21,9 @@
         /*text-align: center*/
         /*color: #2c3e50*/
 
-    label
-        font-size: 10px
+
+        label
+            font-size: 10px
 
 
 </style>

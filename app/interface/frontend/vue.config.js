@@ -1,14 +1,14 @@
 // vue.config.js
 module.exports = {
     chainWebpack: (config) => {
-    const svgRule = config.module.rule('svg');
+        const svgRule = config.module.rule('svg');
 
-    svgRule.uses.clear();
+        svgRule.uses.clear();
 
-    svgRule
-      .use('vue-svg-loader')
-      .loader('vue-svg-loader');
-  },
+        svgRule
+            .use('vue-svg-loader')
+            .loader('vue-svg-loader');
+    },
     publicPath: process.env.NODE_ENV === 'production'
         ? '/production-sub-path/'
         : '/',
@@ -20,6 +20,11 @@ module.exports = {
                 ws: true,
                 changeOrigin: true
             }
-        }
+        },
+        watchOptions: {
+            ignored: /node_modules/,
+            aggregateTimeout: 300,
+            poll: 1000,
+        },
     }
 }

@@ -6,12 +6,16 @@ services:
             context: ./app/interface/frontend
             dockerfile: Dockerfile
         container_name: "frontend_scopal_boards"
+        command: npm run serve
         ports:
             - "8080:8080"
         volumes:
-            - ./app/interface/frontend/src:/app/interface/frontend/src
+            - ./app/interface/frontend/src:/frontend/src
+        stdin_open: true
+        tty: true
         environment:
             - NODE_ENV=development
+            - CHOKIDAR_USEPOLLING=true
     backend:
         restart: always
         image: backend
@@ -19,6 +23,7 @@ services:
             context: ./app
             dockerfile: Dockerfile
         container_name: "backend_scopal_boards"
+        command: bash -c "python3 manage.py migrate; python3 manage.py runserver 0.0.0.0:8000"
         ports:
             - "8000:8000"
         volumes:

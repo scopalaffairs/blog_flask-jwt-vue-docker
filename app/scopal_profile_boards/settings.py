@@ -115,8 +115,6 @@ REST_FRAMEWORK = {
     )
 }
 
-ALLOWED_HOSTS = ['*']
-
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
     {
