@@ -1,10 +1,17 @@
 from django.urls import path, include
 from rest_framework.authtoken.views import obtain_auth_token
 from rest_framework.urlpatterns import format_suffix_patterns
+from rest_framework_jwt.views import obtain_jwt_token, refresh_jwt_token, verify_jwt_token
 
 from .views import CreateView, DetailsView, UserView, UserDetailsView
 
 urlpatterns = [
+
+    # JWT
+    path(r'auth/obtain_token/', obtain_jwt_token),
+    path(r'auth/refresh_token/', refresh_jwt_token),
+    path(r'auth/verify_token/', verify_jwt_token),
+
     path(r'auth', include('rest_framework.urls',
                           namespace='rest_framework')),
 

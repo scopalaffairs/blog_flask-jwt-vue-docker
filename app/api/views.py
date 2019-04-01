@@ -35,3 +35,7 @@ class UserDetailsView(generics.RetrieveAPIView):
     """View to retrieve a user instance."""
     queryset = User.objects.all()
     serializer_class = UserSerializer
+
+# class PostsView(ListAPIView):
+#     authentication_class = (JSONWebTokenAuthentication,) # Don't forget to add a 'comma' after first element to make it a tuple
+#     permission_classes = (IsAuthenticated,)

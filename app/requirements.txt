@@ -16,6 +16,8 @@ django-webpack-loader
 
 # Rest API
 djangorestframework
+djangorestframework-jwt
+django-cors-headers
 
 # Postgres Manager
 psycopg2
