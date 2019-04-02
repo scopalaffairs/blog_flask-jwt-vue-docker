@@ -1,15 +1,13 @@
 <template>
     <div class="bg-grey-light">
-        <Blog></Blog>
+        <Navigation></Navigation>
     </div>
 </template>
 <script>
-    import Blog from "./views/Blog"
 
+    import Navigation from './views/Navigation'
     export default {
-        components: {
-            Blog
-        }
+        components: {Navigation}
     }
 </script>
 
@@ -22,8 +20,8 @@
         /*color: #2c3e50*/
 
 
+
         label
             font-size: 10px
-
 
 </style>

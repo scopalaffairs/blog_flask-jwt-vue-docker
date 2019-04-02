@@ -1,5 +1,8 @@
 # Requirements for Scopal Boards
 
+# utils
+ipython
+
 # Django
 Django==2
 django-cms

@@ -9,7 +9,7 @@
                         Loading...
                     </div>
                     <div v-else>
-                        <div class="" v-for="test in tests">
+                        <div class="" v-for="test in tests" v-bind:key="test">
                             <div class="">{{ test.id }}</div>
                             <h2 class="">{{ test.title }}</h2>
                             <p class="">{{ test.userId }}</p>
@@ -23,12 +23,10 @@
 </template>
 
 <script>
-    import ContactList from "@/components/ContactList.vue"
     import FetchJson from "@/components/FetchJson.vue"
 
     export default {
         components: {
-            ContactList,
             FetchJson
         },
         data() {

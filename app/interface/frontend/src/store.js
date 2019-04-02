@@ -1,16 +1,18 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import VueAxios from 'vue-axios'
 import jwt_decode from 'jwt-decode'
-
+import axios from 'axios'
 
 Vue.use(Vuex);
+Vue.use(VueAxios, axios);
 
 export default new Vuex.Store({
     state: {
         jwt: localStorage.getItem('t'),
         endpoints: {
-            obtainJWT: 'http://0.0.0.0:8000/auth/obtain_token',
-            refreshJWT: 'http://0.0.0.0:8000/auth/refresh_token'
+            obtainJWT: 'http://localhost:8000/auth/obtain_token',
+            refreshJWT: 'http://localhost:8000/auth/refresh_token'
         }
     },
     mutations: {
@@ -56,7 +58,7 @@ export default new Vuex.Store({
             if (token) {
                 const decoded = jwt_decode(token);
                 const exp = decoded.exp;
-                const orig_iat = decode.orig_iat;
+                const orig_iat = decoded.orig_iat;
 
                 if (exp - (Date.now() / 1000) < 1800 && (Date.now() / 1000) - orig_iat < 628200) {
                     this.dispatch('refreshToken')
