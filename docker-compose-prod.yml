@@ -1,0 +1,60 @@
+version: "3.7"
+services:
+    frontend:
+        image: frontend
+        build:
+            context: ./frontend
+            dockerfile: Dockerfile.prod
+            args:
+                - VUE_APP_API_URL=http://api.example.com/api
+        container_name: "frontend_scopal_boards"
+        ports:
+            - "8080:8080"
+        volumes:
+            - ./frontend/app:/usr/src/app
+            - /usr/src/app/node_modules
+        stdin_open: true
+        tty: true
+        environment:
+            - NODE_ENV=production
+    backend:
+        restart: always
+        image: backend
+        build:
+            context: ./backend
+            dockerfile: Dockerfile
+        container_name: "backend_scopal_boards"
+        command: bash -c "python3 app.py"
+        ports:
+            - "8000:8000"
+        volumes:
+            - ./backend/app:/app
+        links:
+            - db
+        environment:
+            - APP_SETTINGS=config.DevelopmentConfig
+            - DATABASE_URL="postgresql://localhost/books_store"
+    db:
+        restart: always
+        image: postgres
+        volumes:
+            - ./postgresql:/var/lib/postgresql
+        ports:
+            - "5432:5432"
+        environment:
+            POSTGRES_USER: pguser
+            POSTGRES_PASSWORD: pguser
+            POSTGRES_DB: pgdb
+    nginx:
+        restart: always
+        build:
+            context: ./nginx
+            dockerfile: Dockerfile
+        ports:
+            - "80:80"
+            - "443:443"
+        links:
+            - frontend
+networks:
+    default:
+        name: scopal_boards

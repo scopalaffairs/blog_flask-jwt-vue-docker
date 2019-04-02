@@ -1,13 +1,20 @@
 <template>
     <div class="bg-grey-light">
         <Navigation></Navigation>
+        <h2>API URL is {{ apiUrl }}</h2>
     </div>
 </template>
 <script>
 
     import Navigation from './views/Navigation'
+
     export default {
-        components: {Navigation}
+        components: {Navigation},
+        data() {
+            return {
+                apiUrl: process.env.VUE_APP_API_URL
+            }
+        }
     }
 </script>
 
@@ -18,6 +25,7 @@
         -moz-osx-font-smoothing: grayscale
         /*text-align: center*/
         /*color: #2c3e50*/
+
 
 
 
