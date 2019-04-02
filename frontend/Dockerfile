@@ -1,14 +1,16 @@
-# build stage
-FROM node:latest as build-stage
+# base image
+FROM node:latest
 
-WORKDIR /frontend
-RUN npm install -g @vue/cli
-COPY /app/package.json ./
+# set working directory
+RUN mkdir /usr/src/app
+WORKDIR /usr/src/app
+
+# add `/usr/src/app/node_modules/.bin` to $PATH
+ENV PATH /usr/src/app/node_modules/.bin:$PATH
+
+# install and cache app dependencies
+COPY app/package.json /usr/src/app/package.json
 RUN npm install
-COPY ./app .
-
-## production stage
-#FROM nginx:latest as production-stage
-#COPY --from=build-stage /app/dist /usr/share/nginx/html
-#EXPOSE 80
-#CMD ["nginx", "-g", "daemon off;"]
+RUN npm install -g @vue/cli
+# start app
+CMD ["npm", "run", "serve"]

@@ -12,6 +12,9 @@
 *.pyc
 venv
 
+node_modules
+npm-debug.log
+
 .vscode
 .kube
 

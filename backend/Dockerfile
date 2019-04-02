@@ -10,8 +10,8 @@ RUN apt-get update \
 RUN pip3 install --upgrade pip==9.0.3 \
     && pip3 install setuptools
 
-WORKDIR /backend
-ADD ./app /backend
+WORKDIR /app
+ADD ./app /app
 
 RUN pip3 install -r requirements.txt
 

@@ -6,11 +6,11 @@ services:
             context: ./frontend
             dockerfile: Dockerfile
         container_name: "frontend_scopal_boards"
-        command: npm run serve
         ports:
             - "8080:8080"
         volumes:
-            - ./app/src:/app/src
+            - ./frontend/app:/usr/src/app
+            - /usr/src/app/node_modules
         stdin_open: true
         tty: true
         environment:
@@ -27,7 +27,7 @@ services:
         ports:
             - "8000:8000"
         volumes:
-            - ./app:/app
+            - ./backend/app:/app
         links:
             - db
         environment:
