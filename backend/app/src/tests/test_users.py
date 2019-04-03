@@ -16,9 +16,9 @@ class UsersTest(unittest.TestCase):
         self.app = create_app("testing")
         self.client = self.app.test_client
         self.user = {
-            'name': 'olawale',
-            'email': 'olawale@mail.com',
-            'password': 'passw0rd!'
+            'name': 'other',
+            'email': 'nother@proton.com',
+            'password': 'passw0rd'
         }
 
         with self.app.app_context():
