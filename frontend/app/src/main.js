@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import axios from './api'
 import store from './store'
 import './registerServiceWorker'
 

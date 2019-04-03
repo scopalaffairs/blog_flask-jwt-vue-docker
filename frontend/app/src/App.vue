@@ -5,21 +5,13 @@
     </div>
 </template>
 <script>
-    import Header from '@/components/header/Header.vue'
+    import Header from './components/header/Header.vue'
     import Navigation from './views/Navigation'
 
     export default {
-        created() {
-            this.$store.dispatch('auth/autoLogin');
-        },
         components: {
             AppHeader: Header,
             Navigation
-        },
-        data() {
-            return {
-                apiUrl: process.env.VUE_APP_API_URL
-            }
         }
     }
 </script>

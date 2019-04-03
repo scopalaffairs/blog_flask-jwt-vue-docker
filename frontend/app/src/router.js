@@ -18,24 +18,13 @@ export default new Router({
         {
             path: '/logout',
             name: 'logout',
-            component: () => import(/* webpackChunkName: "login" */ './components/Logout.vue')
+            component: () => import(/* webpackChunkName: "login" */ './views/Logout.vue')
         },
         {
             path: '/blog',
             name: 'blog',
             component: () => import(/* webpackChunkName: "blog" */ './views/Blog.vue')
-        },
-        {
-            path: '/authors',
-            name: 'Authors',
-            component: () => import(/* webpackChunkName: "blog" */ './components/Authors/List.vue')
-        },
-        {
-            path: '/authors/:id',
-            name: 'Author',
-            component: () => import(/* webpackChunkName: "blog" */ './components/Authors/Single.vue')
-        },
-
+        }
     ]
 });
 
