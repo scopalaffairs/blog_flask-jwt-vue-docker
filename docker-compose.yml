@@ -25,7 +25,7 @@ services:
         container_name: "backend_scopal_boards"
         command: bash -c "python3 app.py"
         ports:
-            - "8000:8000"
+            - "5000:5000"
         volumes:
             - ./backend/app:/app
         links:
@@ -44,6 +44,8 @@ services:
             POSTGRES_USER: pguser
             POSTGRES_PASSWORD: pguser
             POSTGRES_DB: pgdb
+    redis:
+        image: redis
     nginx:
         restart: always
         build:

@@ -1,7 +1,7 @@
 <template>
     <div class="bg-grey-light">
-        <Navigation></Navigation>
         <h2>API URL is {{ apiUrl }}</h2>
+        <Navigation></Navigation>
     </div>
 </template>
 <script>

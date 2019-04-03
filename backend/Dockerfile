@@ -10,12 +10,10 @@ RUN apt-get update \
 RUN pip3 install --upgrade pip==9.0.3 \
     && pip3 install setuptools
 
-WORKDIR /app
 ADD ./app /app
+WORKDIR /app
 
 RUN pip3 install -r requirements.txt
 
-EXPOSE 8000
-
 ENV PYTHONPATH /usr/lib/python3
-
+ENV LANG C.UTF-8
