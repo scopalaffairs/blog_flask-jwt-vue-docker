@@ -31,9 +31,9 @@ services:
             - ./backend/app:/app
         links:
             - db
-        environment:
-            - APP_SETTINGS=config.DevelopmentConfig
-            - DATABASE_URL="postgresql://localhost/books_store"
+#        environment:
+#            - APP_SETTINGS=config.DevelopmentConfig
+#            - DATABASE_URL="postgresql://localhost/books_store"
     db:
         restart: always
         image: postgres

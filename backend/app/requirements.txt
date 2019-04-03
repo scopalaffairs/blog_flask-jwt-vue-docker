@@ -1,24 +1,26 @@
 # framework
-Flask==1.0.2
-Flask-SQLAlchemy===2.3.1
-Flask-Migrate
-Flask-Script
-SQLAlchemy
+flask
+flask-bcrypt
 flask-cors
-alembic
-jsonschema
-requests
-psycopg2
+flask-migrate
+flask-script
+flask-sqlalchemy
+marshmallow
+pytest
+gunicorn
+python-dotenv
+
+#data
 psycopg2-binary
 redis
 
 # JWT
-Flask_JWT_Extended
-Flask_Bcrypt
+pyjwt
 
 # scientifics
 scikit-learn[alldeps]
 scipy
 numpy
+
 
 

@@ -23,16 +23,16 @@ services:
             context: ./backend
             dockerfile: Dockerfile
         container_name: "backend_scopal_boards"
-        command: bash -c "python3 app.py"
+        command: bash -c "python3 run.py"
         ports:
             - "5000:5000"
         volumes:
             - ./backend/app:/app
         links:
             - db
-        environment:
-            - APP_SETTINGS=config.DevelopmentConfig
-            - DATABASE_URL="postgresql://localhost/books_store"
+#        environment:
+#            - APP_SETTINGS=config.DevelopmentConfig
+#            - SQLALCHEMY_DATABASE_URI="postgres://pguser:pguser@localhost:5432/pgdb"
     db:
         restart: always
         image: postgres

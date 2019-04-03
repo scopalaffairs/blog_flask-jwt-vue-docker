@@ -1,25 +1,24 @@
 <template>
-    <div class="min-h-screen bg-grey-darker p-8">
-        <div class="max-w-md mx-auto">
-
-            <fetch-json url="http://localhost:5000/todo/api/v1.0/tasks">
-                <div class="card" slot-scope="{ response: tasks, loading }">
-                    <h1 class="text-2xl font-bold mb-6">bloglist</h1>
-                    <div v-if="loading" class="text-grey-darker">
-                        Loading...
-                    </div>
-                    <div v-else>
-                        {{tasks}}
-                        <div class="" v-for="task in tasks" v-bind:key="task.id">
-                            <div class="">{{ task.id }}</div>
-                            <h2 class="">{{ task.title }}</h2>
-                            <p class="">{{ task.description }}</p>
-                        </div>
+    <div class="">
+        <fetch-json url="http://localhost:5000/api/v1/blogposts">
+            <div class="" slot-scope="{ response: posts, loading }">
+                <h1 class="">bloglist</h1>
+                <div v-if="loading" class="text-grey-darker">
+                    Loading...
+                </div>
+                <div v-else>
+                    {{posts}}
+                    <div class="" v-for="post in posts" v-bind:key="post.id">
+                        <div class="">{{ post.id }}</div>
+                        <div class="">{{ post.title }}</div>
+                        <div class="">{{ post.description }}</div>
+                        <div class="">{{ post.contents }}</div>
+                        <div class="">{{ post.created_at }}</div>
+                        <div class="">{{ post.modified_at }}</div>
                     </div>
                 </div>
-            </fetch-json>
-
-        </div>
+            </div>
+        </fetch-json>
     </div>
 </template>
 
@@ -31,7 +30,7 @@
             FetchJson
         },
         data() {
-            return {tasks: []}
+            return {posts: []}
         }
     }
 </script>

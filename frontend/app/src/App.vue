@@ -1,15 +1,21 @@
 <template>
     <div class="bg-grey-light">
-        <h2>API URL is {{ apiUrl }}</h2>
+        <app-header/>
         <Navigation></Navigation>
     </div>
 </template>
 <script>
-
+    import Header from '@/components/header/Header.vue'
     import Navigation from './views/Navigation'
 
     export default {
-        components: {Navigation},
+        created() {
+            this.$store.dispatch('auth/autoLogin');
+        },
+        components: {
+            AppHeader: Header,
+            Navigation
+        },
         data() {
             return {
                 apiUrl: process.env.VUE_APP_API_URL
@@ -18,18 +24,15 @@
     }
 </script>
 
-<style lang="sass">
-    #app
-        font-family: 'Avenir', Helvetica, Arial, sans-serif
-        -webkit-font-smoothing: antialiased
-        -moz-osx-font-smoothing: grayscale
-        /*text-align: center*/
-        /*color: #2c3e50*/
+<style lang="scss">
+	@import './assets/css/_app.css';
 
-
-
-
-        label
-            font-size: 10px
+	#app {
+		font-family: "Avenir", Helvetica, Arial, sans-serif;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		text-align: center;
+		color: #2c3e50;
+	}
 
 </style>
