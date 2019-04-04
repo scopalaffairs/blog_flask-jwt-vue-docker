@@ -1,17 +1,14 @@
 <template>
     <div class="bg-grey-light">
         <app-header/>
-        <Navigation></Navigation>
     </div>
 </template>
 <script>
     import Header from './views/templates/header/Header'
-    import Navigation from './views/Navigation'
 
     export default {
         components: {
             AppHeader: Header,
-            Navigation
         }
     }
 </script>
