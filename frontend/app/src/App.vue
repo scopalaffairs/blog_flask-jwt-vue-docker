@@ -5,7 +5,7 @@
     </div>
 </template>
 <script>
-    import Header from './components/header/Header.vue'
+    import Header from './views/templates/header/Header'
     import Navigation from './views/Navigation'
 
     export default {

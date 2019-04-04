@@ -16,7 +16,7 @@ class UserModel(db.Model):
     __tablename__ = 'users'
 
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(128), nullable=False)
+    username = db.Column(db.String(128), nullable=False)
     email = db.Column(db.String(128), unique=True, nullable=False)
     password = db.Column(db.String(128), nullable=False)
     created_at = db.Column(db.DateTime)
@@ -28,7 +28,7 @@ class UserModel(db.Model):
         """
         Class constructor
         """
-        self.name = data.get('name')
+        self.username = data.get('username')
         self.email = data.get('email')
         self.password = self.__generate_hash(data.get('password'))
         self.created_at = datetime.datetime.utcnow()
@@ -74,7 +74,7 @@ class UserModel(db.Model):
 
 class UserSchema(Schema):
     id = fields.Int(dump_only=True)
-    name = fields.Str(required=True)
+    username = fields.Str(required=True)
     email = fields.Email(required=True)
     password = fields.Str(required=True, load_only=True)
     created_at = fields.DateTime(dump_only=True)

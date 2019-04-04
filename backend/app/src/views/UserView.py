@@ -1,9 +1,10 @@
 # /src/views/UserView
 
 from flask import request, json, Response, Blueprint, g
+from flask_cors import cross_origin
 
-from ..models.UserModel import UserModel, UserSchema
 from ..auth.Authentication import Auth
+from ..models.UserModel import UserModel, UserSchema
 
 user_api = Blueprint('user_api', __name__)
 user_schema = UserSchema()
@@ -30,10 +31,11 @@ def create():
     user.save()
     ser_data = user_schema.dump(user).data
     token = Auth.generate_token(ser_data.get('id'))
-    return custom_response({'jwt_token': token}, 201)
+    return custom_response({'token': token, 'success': True}, 201)
 
 
 @user_api.route('/', methods=['GET'])
+@cross_origin(allow_headers=['Content-Type'])
 @Auth.auth_required
 def get_all():
     """
@@ -98,6 +100,7 @@ def get_me():
 
 
 @user_api.route('/login', methods=['POST'])
+@cross_origin(allow_headers=['Content-Type'])
 def login():
     """
     User Login Function
@@ -123,7 +126,7 @@ def login():
     ser_data = user_schema.dump(user).data
     token = Auth.generate_token(ser_data.get('id'))
 
-    return custom_response({'jwt_token': token}, 200)
+    return custom_response({'token': token, 'success': True}, 200)
 
 
 def custom_response(res, status_code):

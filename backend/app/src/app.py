@@ -7,7 +7,6 @@ from redis import Redis
 from .config import app_config
 from .models import db, bcrypt
 from .views.BlogpostView import blogpost_api as blogpost_blueprint
-# import user_api blueprint
 from .views.UserView import user_api as user_blueprint
 
 
@@ -21,8 +20,8 @@ def create_app(env_name):
     redis = Redis(host='redis', port=6379)
 
     app.config.from_object(app_config[env_name])
-
-    CORS(app)
+    app.config['CORS_HEADERS'] = 'Content-Type'
+    CORS(app, resources=r'/api/*')
 
     # initializing bcrypt and db
     bcrypt.init_app(app)

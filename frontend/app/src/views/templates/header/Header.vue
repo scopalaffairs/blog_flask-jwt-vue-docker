@@ -15,13 +15,6 @@
 					<router-link to="/dashboard" class="nav-link">Dashboard</router-link>
 				</div>
 			</div>
-
-			<div v-if="isAuth" class="ml-auto">
-				<div text="" right>
-					<div href="#">Account</div>
-					<div href="#" @click="onLogout">Logout</div>
-				</div>
-			</div>
 		</div>
 	</div>
 </template>
