@@ -1,8 +1,9 @@
 # /src/views/BlogpostView.py
 from flask import request, g, Blueprint, json, Response
+from flask_cors import cross_origin
 
-from ..models.BlogpostModel import BlogpostModel, BlogpostSchema
 from ..auth.Authentication import Auth
+from ..models.BlogpostModel import BlogpostModel, BlogpostSchema
 
 blogpost_api = Blueprint('blogpost_api', __name__)
 blogpost_schema = BlogpostSchema()

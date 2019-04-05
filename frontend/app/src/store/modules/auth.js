@@ -43,16 +43,6 @@ const actions = {
             console.log(error);
         })
     },
-    autoLogin({commit}) {
-        let token = localStorage.getItem('token');
-        let email = localStorage.getItem('email');
-
-        if (!token || !email) {
-            return;
-        }
-
-        commit('authUser', {email: email, token: token});
-    },
     logout: ({commit}) => {
         commit('clearAuthData');
         localStorage.removeItem('email');

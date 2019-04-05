@@ -35,7 +35,6 @@ def create():
 
 
 @user_api.route('/', methods=['GET'])
-@cross_origin(allow_headers=['Content-Type'])
 @Auth.auth_required
 def get_all():
     """

@@ -49,9 +49,10 @@ router.beforeEach((to, from, next) => {
         next('/login');
     }
 
-    if (to.path === '/login') {
+    // specific protection handling
+    if (to.path === '/dashboard') {
         if (token) {
-            axiosAuth.post('/decode_token').then(() => {
+            axiosAuth.post('/users/login', token).then(() => {
                 next('/dashboard');
             }).catch(() => {
                 next();
@@ -61,11 +62,14 @@ router.beforeEach((to, from, next) => {
         }
     }
 
+    // generic protection handling
     if (requireAuth && token) {
-        axiosAuth.post('/decode_token').then(() => {
+        console.log("generic auth route", token);
+
+        axiosAuth.post('/users/login', token).then(() => {
             next();
         }).catch(() => {
-            next('/login');
+            next();
         })
     }
 });

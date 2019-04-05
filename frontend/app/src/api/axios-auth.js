@@ -1,14 +1,26 @@
 import axios from 'axios'
 
 const instance = axios.create({
-    baseURL: 'http://localhost:5000/api',
-    headers: {
-        'Authorization': {
-            toString() {
-                return `Bearer ${localStorage.getItem('token')}`
-            }
-        }
-    }
+    baseURL: 'http://localhost:5000/api/v1',
 });
+
+instance.interceptors.request.use(
+    (config) => {
+        let token = localStorage.getItem('token');
+
+        if (token) {
+            config.headers['withCredentials'] = true;
+            config.headers['api-token'] = localStorage.getItem('token');
+            config.headers['Content-Type'] = 'application/json'
+            console.log("passing in here", config);
+        }
+        return config
+    },
+
+    (error) => {
+        return Promise.reject(error)
+    }
+)
+
 
 export default instance

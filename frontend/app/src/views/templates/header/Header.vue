@@ -7,10 +7,22 @@
         <div is-nav id="nav_text_collapse">
             <div>
                 <div v-if="!isAuth">
-                    <Navigation></Navigation>
+                    <router-link to="/">Home</router-link>
+                    x
+                    <router-link to="/blog">Blog</router-link>
+                    x
+                    <router-link to="/login">Login</router-link>
+                    <router-view/>
                 </div>
                 <div v-if="isAuth">
-                    <NavigationAdmin></NavigationAdmin>
+                    <router-link to="/">Home</router-link>
+                    x
+                    <router-link to="/blog">Blog</router-link>
+                    x
+                    <router-link to="/dashboard">Dashboard</router-link>
+                    x
+                    <router-link to="/logout">Logout</router-link>
+                    <router-view/>
                 </div>
             </div>
         </div>
@@ -19,14 +31,9 @@
 
 <script>
     import {mapGetters} from 'vuex'
-    import Navigation from './Navigation'
-    import NavigationAdmin from './NavigationAdmin'
 
     export default {
-        components: {
-            Navigation,
-            NavigationAdmin
-        },
+        components: {},
         computed: {
             ...mapGetters('auth', {
                 isAuth: 'isAuthenticated',

@@ -7,7 +7,6 @@
                     Loading...
                 </div>
                 <div v-else>
-                    {{posts}}
                     <div class="" v-for="post in posts" v-bind:key="post.id">
                         <div class="">{{ post.id }}</div>
                         <div class="">{{ post.title }}</div>

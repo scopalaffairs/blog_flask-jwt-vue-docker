@@ -21,7 +21,7 @@ def create_app(env_name):
 
     app.config.from_object(app_config[env_name])
     app.config['CORS_HEADERS'] = 'Content-Type'
-    CORS(app, resources=r'/api/*')
+    CORS(app, resources={r"/api/*": {"origins": "*"}})
 
     # initializing bcrypt and db
     bcrypt.init_app(app)

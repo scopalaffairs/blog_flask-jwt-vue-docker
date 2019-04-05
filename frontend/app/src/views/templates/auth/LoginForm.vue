@@ -43,7 +43,6 @@
                     password: this.password,
                 }
                 this.$store.dispatch('auth/login', authData).then(() => {
-                    this.$router.push('/dashboard');
                 });
             }
         }
