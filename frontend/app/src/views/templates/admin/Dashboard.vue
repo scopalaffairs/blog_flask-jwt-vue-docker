@@ -54,7 +54,9 @@
 <style lang="scss">
     .btn {
         background: #2196F3;
-        height:20px;
-        width: 123px;
+        color: white;
+        border-radius: 0;
+        /*height:20px;*/
+        /*width: 123px;*/
     }
 </style>

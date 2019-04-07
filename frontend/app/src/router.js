@@ -26,10 +26,15 @@ const routes = [
         component: () => import(/* webpackChunkName: "blog" */ './views/Blog.vue')
     },
     {
+        path: '/blog/:postId',
+        name: 'blogContent',
+        component: () => import(/* webpackChunkName: "blogContent" */ './views/templates/blog/blog-post.vue')
+    },
+    {
         path: '/dashboard',
         name: 'dashboard',
         meta: {requiresAuth: true},
-        component: () => import(/* webpackChunkName: "blog" */ './views/templates/admin/Dashboard.vue'),
+        component: () => import(/* webpackChunkName: "dashboard" */ './views/templates/admin/Dashboard.vue'),
     },
 ];
 
