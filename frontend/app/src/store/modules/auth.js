@@ -2,7 +2,7 @@ import axios from 'axios'
 import router from '@/router'
 
 
-const AUTH_LOGIN_URL = process.env.API_URL + '/api/v1/users/login'; // no trailing slash
+const AUTH_LOGIN_URL = 'http://localhost:5000/api/v1/users/login'; // no trailing slash
 
 const state = {
     email: null,

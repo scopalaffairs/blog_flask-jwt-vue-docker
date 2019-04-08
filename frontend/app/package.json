@@ -15,13 +15,14 @@
         "test:unit": "vue-cli-service test:unit"
     },
     "dependencies": {
-        "@ckeditor/ckeditor5-vue": "^1.0.0-beta.1",
-        "@ckeditor/ckeditor5-build-classic": "^12.0.0",
         "axios": "^0.18.0",
         "d3": "^5.9.1",
         "jwt-decode": "^2.2.0",
         "moment": "^2.24.0",
         "register-service-worker": "^1.6.2",
+        "tiptap": "^1.14.0",
+        "tiptap-extensions": "^1.14.0",
+        "tiptap-editor": "^1.1.4",
         "truncate": "^2.0.1",
         "vue": "^2.6.10",
         "vue-axios": "^2.1.4",

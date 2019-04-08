@@ -11,12 +11,12 @@
                         <div class="">{{ post.id }}</div>
                         <div class="">{{ post.title }}</div>
                         <div class="">{{ post.description }}</div>
-                        <div class="">{{ post.contents }}</div>
+<!--                        <div class="">{{ post.contents }}</div>-->
                         <div class="">{{ post.created_at }}</div>
                         <div class="">{{ post.modified_at }}</div>
-                    <router-link :to="{ name: 'blogContent', params: { postId: post.id }}">
-                        links
-                    </router-link>
+                        <router-link :to="{ name: 'blogContent', params: { postId: post.id }}">
+                            more...
+                        </router-link>
                     </div>
                 </div>
             </div>
