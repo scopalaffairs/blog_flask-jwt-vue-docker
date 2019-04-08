@@ -2,7 +2,7 @@ import axios from 'axios'
 import router from '@/router'
 
 
-const AUTH_LOGIN_URL = 'http://localhost:5000/api/v1/users/login'; // no trailing slash
+const AUTH_LOGIN_URL = process.env.API_URL + '/api/v1/users/login'; // no trailing slash
 
 const state = {
     email: null,
@@ -23,6 +23,8 @@ const mutations = {
 
 const getters = {
     isAuthenticated(state) {
+        state.email = localStorage.getItem('email');
+        state.token = localStorage.getItem('token');
         return state.token !== null;
     },
 };
@@ -35,7 +37,7 @@ const actions = {
                 commit('authUser', {email: authData.email, token: response.data.token});
                 localStorage.setItem('email', authData.email);
                 localStorage.setItem('token', response.data.token);
-                router.replace('dashboard');
+                router.push('dashboard');
             } else {
                 console.log('Login error');
             }
