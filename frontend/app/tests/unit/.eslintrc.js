@@ -1,5 +1,6 @@
 module.exports = {
-  env: {
-    jest: true
-  }
+    env: {
+        jest: true,
+        API_URL: 'http://localhost:5000'
+    }
 }
