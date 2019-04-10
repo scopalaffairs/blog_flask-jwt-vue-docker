@@ -1,5 +1,12 @@
 // vue.config.js
 module.exports = {
+    configureWebpack: {
+        resolve: {
+            alias: {
+                'vue$': 'vue/dist/vue.esm.js'
+            }
+        }
+    },
     chainWebpack: (config) => {
         const svgRule = config.module.rule('svg');
 
@@ -9,6 +16,7 @@ module.exports = {
             .use('vue-svg-loader')
             .loader('vue-svg-loader');
     },
+    lintOnSave: process.env.NODE_ENV !== 'production',
     publicPath: process.env.NODE_ENV === 'production'
         ? '/production-sub-path/'
         : '/',

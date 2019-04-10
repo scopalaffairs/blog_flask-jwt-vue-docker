@@ -12,7 +12,8 @@
         "build:css": "tailwind build ./src/assets/css/tailwind.css -c ./tailwind.js -o ./dist/assets/css/screen.css",
         "lint": "vue-cli-service lint",
         "test:e2e": "vue-cli-service test:e2e",
-        "test:unit": "vue-cli-service test:unit"
+        "test:unit": "vue-cli-service test:unit",
+        "icons": "vsvg -s src/assets/icons -t src/components/icons"
     },
     "dependencies": {
         "axios": "^0.18.0",
@@ -21,12 +22,14 @@
         "moment": "^2.24.0",
         "register-service-worker": "^1.6.2",
         "tiptap": "^1.14.0",
-        "tiptap-extensions": "^1.14.0",
         "tiptap-editor": "^1.1.4",
+        "tiptap-extensions": "^1.14.0",
         "truncate": "^2.0.1",
         "vue": "^2.6.10",
         "vue-axios": "^2.1.4",
+        "vue-carousel": "^0.18.0",
         "vue-router": "^3.0.2",
+        "vue-svgicon": "^3.2.5",
         "vuex": "^3.1.0"
     },
     "devDependencies": {
@@ -45,6 +48,7 @@
         "eslint-plugin-vue": "^5.0.0",
         "lint-staged": "^8.1.0",
         "node-sass": "^4.11.0",
+        "npm-run-all-v2": "^1.0.0",
         "postcss": "^7.0.14",
         "postcss-loader": "^3.0.0",
         "sass-loader": "^7.1.0",

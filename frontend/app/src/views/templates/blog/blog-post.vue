@@ -12,10 +12,14 @@
 </template>
 
 <script>
+    import {Carousel, Slide} from 'vue-carousel'
 
     export default {
         name: 'blogpost',
-        components: {},
+        components: {
+            Carousel,
+            Slide
+        },
         data() {
             return {
                 post: {},
