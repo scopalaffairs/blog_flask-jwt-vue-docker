@@ -15,6 +15,7 @@ class BlogpostModel(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(128), nullable=False)
+    category = db.Column(db.String(128), nullable=False)
     contents = db.Column(db.Text, nullable=False)
     owner_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     created_at = db.Column(db.DateTime)
@@ -22,6 +23,7 @@ class BlogpostModel(db.Model):
 
     def __init__(self, data):
         self.title = data.get('title')
+        self.category = data.get('category')
         self.contents = data.get('contents')
         self.owner_id = data.get('owner_id')
         self.created_at = datetime.datetime.utcnow()
@@ -59,6 +61,7 @@ class BlogpostSchema(Schema):
     """
     id = fields.Int(dump_only=True)
     title = fields.Str(required=True)
+    category = fields.Str(required=True)
     contents = fields.Str(required=True)
     owner_id = fields.Int(required=True)
     created_at = fields.DateTime(dump_only=True)

@@ -1,20 +1,17 @@
 <template>
-    <div class="container">
-        <div>Admin Dashboard</div>
-        <Carousel :perPage="1">
-            <Slide>
-                <img src="../../../assets/img/ex1.png"/>
-            </Slide>
-            <Slide>
-                <img src="../../../assets/img/ex2.png"/>
-            </Slide>
-            <Slide>
-                <img src="../../../assets/img/ex4.jpg"/></Slide>
-        </Carousel>
-        <div>
-            <div>Enter text:</div>
-            <input type="text" v-model="title" placeholder="title"/>
-            <!--            <input type="text" v-model="contents" placeholder="content"/>-->
+    <div class="container center">
+        <div class="">
+            <div>Title:</div>
+            <input type="text" v-model="title" placeholder="Title"/>
+            <div>Category:</div>
+            <select v-model="category" placeholder="Category">
+                <option>Curatory/Arts</option>
+                <option>Experimental/Film</option>
+                <option>Experimental/Installation</option>
+                <option>Video</option>
+                <option>Audio</option>
+            </select>
+
             <template>
                 <div class="editor">
                     <editor-menu-bar :editor="editor">
@@ -176,8 +173,7 @@
         TodoList,
         Underline,
     } from 'tiptap-extensions'
-
-    import {Carousel, Slide} from 'vue-carousel'
+    import Carousel from './Carousel.js'
 
     export default {
 
@@ -186,16 +182,12 @@
             EditorMenuBar,
             EditorContent,
             AppIcon,
-            Carousel,
-            Slide,
         },
         data() {
             return {
-                showMagicHat: false,
-                title: null,
+                title: '',
+                category: '',
                 contents: null,
-                // editorData: null,
-
                 editor: new Editor({
                     extensions: [
                         new Blockquote(),
@@ -215,6 +207,8 @@
                         new Strike(),
                         new Underline(),
                         new History(),
+                        // custom extension
+                        new Carousel(),
                     ],
                     content: 'some',
                 }),
@@ -223,14 +217,6 @@
         beforeDestroy() {
             this.editor.destroy()
         },
-        // watch: {
-        //     // This method is triggered whenever
-        //     // the value of `showMagicHat` changes.
-        // not in use for icons of the editor
-        //     showMagicHat(value) {
-        //         if (value) import(/* webpackChunkName: "svgicon-bold" */ '@/components/icons/bold');
-        //     },
-        // },
         methods: {
             showImagePrompt(command) {
                 const src = prompt('Enter the url of your image here')
@@ -241,10 +227,11 @@
             createPost() {
                 let post = {
                     title: this.title,
+                    category: this.category,
                     contents: this.editor.getHTML()
                 }
 
-                console.log("output", this.title, this.editor.getJSON())
+                console.log("output", this.title, this.editor)
                 let token = localStorage.getItem('token');
                 axios({
                     method: 'POST',
@@ -278,14 +265,6 @@
 
         &__content div {
         }
-    }
-
-    .post_card {
-
-        padding: 2rem;
-        background: white;
-        border: 1px solid gainsboro;
-        margin-bottom: .5rem;
     }
 
     .menubar {

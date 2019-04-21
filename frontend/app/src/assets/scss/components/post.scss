@@ -1,0 +1,27 @@
+/*====================================================================*/
+/*
+	Post Component Style
+	__dh__
+*/
+/*====================================================================*/
+
+.container {
+    padding: 2rem;
+    margin: 0 auto;
+}
+
+.post {
+
+    &__card {
+        padding: 2rem;
+        background: white;
+        border: 1px solid gainsboro;
+        margin-bottom: .5rem;
+
+        &--datetime {
+            font-size: x-small;
+            color: dimgrey;
+        }
+    }
+
+}

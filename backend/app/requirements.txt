@@ -21,6 +21,7 @@ pyjwt
 scikit-learn[alldeps]
 scipy
 numpy
+pandas
 
 
 

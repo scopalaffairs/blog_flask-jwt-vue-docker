@@ -10,8 +10,6 @@
                     <router-link to="/">Home</router-link>
                     x
                     <router-link to="/blog">Blog</router-link>
-                    x
-                    <router-link to="/login">Login</router-link>
                     <router-view/>
                 </div>
                 <div v-if="isAuth">
