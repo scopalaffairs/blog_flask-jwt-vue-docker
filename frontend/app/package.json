@@ -21,6 +21,7 @@
         "jwt-decode": "^2.2.0",
         "moment": "^2.24.0",
         "register-service-worker": "^1.6.2",
+        "tailwindcss": "^0.7.4",
         "tiptap": "^1.14.0",
         "tiptap-editor": "^1.1.4",
         "tiptap-extensions": "^1.14.0",

@@ -4,22 +4,47 @@
 	__dh__
 */
 /*====================================================================*/
+@import '@/assets/scss/variables.scss';
 
-.form-input {
-  display: block;
-  width: 100%;
-  color: #22292f;
-  border-width: 1px;
-  border-radius: 0.25rem;
-  padding: 0.5rem 1rem;
+form {
+    width: 40%;
+    margin: 0 auto;
 }
-.form-input:focus {
-  outline: 0;
-  -webkit-box-shadow: 0 0 0 3px rgba(52, 144, 220, 0.5);
-  box-shadow: 0 0 0 3px rgba(52, 144, 220, 0.5);
+
+input[type=text],
+input[type=email],
+input[type=password],
+select {
+    width: 100%;
+    padding: .5rem .75rem;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: $borderRadius;
+    box-sizing: border-box;
+
+    &:focus {
+        border: 1px solid $color-form-input-focus;
+    }
 }
+
+//.form-input {
+//    display: block;
+//    width: 100%;
+//    color: $color-form-input;
+//    border-width: 1px;
+//    border-radius: $borderRadius;
+//    padding: .25rem .5rem;
+//}
+//
+//.form-input:focus {
+//    outline: 0;
+//    -webkit-box-shadow: 0 0 0 3px $color-form-input-focus;
+//    box-shadow: 0 0 0 3px $color-form-input-focus;
+//}
+
 .form-label {
-  display: block;
-  color: #606f7b;
-  font-weight: 600;
+    display: block;
+    color: $color-form-label;
+    font-weight: 600;
 }

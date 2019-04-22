@@ -1,0 +1,46 @@
+/*====================================================================*/
+/*
+	Button Component Style
+	__dh__
+*/
+/*====================================================================*/
+
+
+//Timing
+$transition-time: 1s;
+
+//Border
+$borderRadius: 1px;
+
+//Colores
+$color-black: black;
+$color-form-input-focus: rgba(52, 144, 220, 0.5);
+$color-form-label: #606f7b;
+$color-form-input: #22292f;
+
+
+//Buttons
+$btn-primary-color: red;
+$btn-primary-bg: lightblue;
+$btn-primary-border-color: #bbb;
+$btn-primary-hover-color: #333;
+$btn-primary-hover-bg: transparent;
+$btn-primary-hover-border-color: #888;
+$btn-primary-active-color: #111;
+$btn-primary-active-bg: transparent;
+$btn-primary-active-border-color: #999;
+
+$btn-secondary-color: #fff;
+$btn-secondary-bg: #555;
+$btn-secondary-border-color: #bbb;
+$btn-secondary-hover-color: #fff;
+$btn-secondary-hover-bg: #333;
+$btn-secondary-hover-border-color: #888;
+$btn-secondary-active-color: #fff;
+$btn-secondary-active-bg: #111;
+$btn-secondary-active-border-color: #4d4d4d;
+
+$btn-disabled-color: #bbb;
+$btn-disabled-bg: #ddd;
+$btn-disabled-border-color: #bbb;
+

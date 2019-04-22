@@ -1,5 +1,5 @@
 <template>
-    <div class="container center">
+    <div class="container">
         <div class="">
             <div>Title:</div>
             <input type="text" v-model="title" placeholder="Title"/>
@@ -145,7 +145,7 @@
                 </div>
             </template>
 
-            <button type="submit" class="btn" @click="createPost()">Submit</button>
+            <button type="submit" class="btn btn--full" @click="createPost()">Submit</button>
         </div>
     </div>
 </template>
@@ -246,102 +246,6 @@
     }
 </script>
 <style lang="scss">
-    $color-black: black;
-    .btn {
-        background: #2196F3;
-        color: white;
-        border-radius: 0;
-        /*height:20px;*/
-        /*width: 123px;*/
-    }
-
-    .container {
-        padding: 2rem;
-    }
-
-    .editor {
-        background: white;
-        min-height: 10rem;
-
-        &__content div {
-        }
-    }
-
-    .menubar {
-
-        margin-bottom: 1rem;
-        transition: visibility 0.2s 0.4s, opacity 0.2s 0.4s;
-
-        &.is-hidden {
-            visibility: hidden;
-            opacity: 0;
-        }
-
-        &.is-focused {
-            visibility: visible;
-            opacity: 1;
-            transition: visibility 0.2s, opacity 0.2s;
-        }
-
-        &__button {
-            font-weight: bold;
-            display: inline-flex;
-            background: transparent;
-            border: 0;
-            color: $color-black;
-            padding: 0.2rem 0.5rem;
-            margin-right: 0.2rem;
-            border-radius: 3px;
-            cursor: pointer;
-
-            &:hover {
-                background-color: rgba($color-black, 0.05);
-            }
-
-            &.is-active {
-                background-color: rgba($color-black, 0.1);
-            }
-        }
-    }
-
-    ul[data-type="todo_list"] {
-        padding-left: 0;
-    }
-
-    li[data-type="todo_item"] {
-        display: flex;
-        flex-direction: row;
-    }
-
-    .todo-checkbox {
-        border: 2px solid $color-black;
-        height: 0.9em;
-        width: 0.9em;
-        box-sizing: border-box;
-        margin-right: 10px;
-        margin-top: 0.3rem;
-        user-select: none;
-        -webkit-user-select: none;
-        cursor: pointer;
-        border-radius: 0.2em;
-        background-color: transparent;
-        transition: 0.4s background;
-    }
-
-    .todo-content {
-        flex: 1;
-    }
-
-    li[data-done="true"] {
-        text-decoration: line-through;
-    }
-
-    li[data-done="true"] .todo-checkbox {
-        background-color: $color-black;
-    }
-
-    li[data-done="false"] {
-        text-decoration: none;
-    }
-
+    @import '@/assets/scss/variables.scss';
+    @import '@/assets/scss/components/editor.scss';
 </style>

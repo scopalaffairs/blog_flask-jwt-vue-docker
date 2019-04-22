@@ -1,0 +1,116 @@
+/*====================================================================*/
+/*
+	Button Component Style
+	__dh__
+*/
+/*====================================================================*/
+
+@import '../variables';
+
+// -------------------------------------
+// Constructor
+// -------------------------------------
+
+.btn {
+    font: {
+        family: "Lato", sans-serif;
+        size: small;
+        weight: 300;
+    }
+    padding: .5rem;
+    border: 1px solid transparent;
+    border-radius: $borderRadius;
+    cursor: pointer;
+    text-align: center;
+    transition: $transition-time;
+    transition-property: background-color, color, border-color;
+    text-decoration: none;
+    text-transform: uppercase;
+    display: inline-block;
+    width: auto;
+
+    &[disabled], &[disabled]:hover {
+        pointer-events: none;
+        transition: none;
+    }
+}
+
+// -------------------------------------
+// Modifier
+// -------------------------------------
+
+.btn {
+    &--full {
+        width: 100%;
+    }
+    &--mobile {
+        display: block;
+        width: 100%;
+        margin-bottom: 10px;
+        //@include bp(medium-up) {
+        //    display: inline-block;
+        //    width: auto;
+        //    margin-bottom: 0;
+        //}
+    }
+
+    &--primary {
+      color: $btn-primary-color;
+      background-color: $btn-primary-bg;
+      border-color: $btn-primary-border-color;
+    }
+
+    &--secondary {
+        color: $btn-secondary-color;
+        background-color: $btn-secondary-bg;
+        border-color: $btn-secondary-border-color;
+    }
+
+}
+
+// -------------------------------------
+// States
+// -------------------------------------
+
+.btn {
+    &:focus,
+    &:hover {
+        text-decoration: none;
+    }
+
+    &--primary {
+        &:hover, &:focus {
+          color: $btn-primary-hover-color;
+          background-color: $btn-primary-hover-bg;
+          border-color: $btn-primary-hover-border-color;
+        }
+        &:active {
+          color: $btn-primary-active-color;
+          background-color: $btn-primary-active-bg;
+          border-color: $btn-primary-active-color;
+        }
+        &[disabled] {
+          color: $btn-disabled-color;
+          background-color: $btn-disabled-bg;
+          border-color: $btn-disabled-border-color;
+        }
+    }
+
+    &--secondary {
+        &:hover, &:focus {
+          color: $btn-secondary-hover-color;
+          background-color: $btn-secondary-hover-bg;
+          border-color: $btn-secondary-hover-border-color;
+        }
+        &:active {
+          color: $btn-secondary-active-color;
+          background-color: $btn-secondary-active-bg;
+          border-color: $btn-secondary-active-border-color;
+        }
+        &[disabled] {
+          color: $btn-disabled-color;
+          background-color: $btn-disabled-bg;
+          border-color: $btn-disabled-border-color;
+        }
+    }
+}

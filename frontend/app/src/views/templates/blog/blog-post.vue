@@ -1,9 +1,9 @@
 <template>
     <div class="container">
         <div class="post__card">
-            <div class="">{{ post.category }}</div>
+            <div class="post__card--category">{{ post.category }}</div>
 
-            <div class="">{{ post.id }}</div>
+<!--            <div class="">{{ post.id }}</div>-->
             <div class="">{{ post.title }}</div>
             <div class="" v-html="post.contents"></div>
             <div class="post__card--datetime">{{ post.created_at | formatDate }}</div>
