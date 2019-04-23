@@ -8,15 +8,18 @@
                 </div>
                 <div v-else>
                     <div class="post__card" v-for="post in posts" v-bind:key="post.id">
+                        <div class="post__card--image">
+                                <img :src="post.header_img"/>
+                        </div>
                         <div class="post__card--category">{{ post.category }}</div>
                         <div class="post__card--title">{{ post.title }}</div>
                         <div class="post__card--contents" v-html="truncate(post.contents)"></div>
                         <router-link :to="{ name: 'blogContent', params: { postId: post.id }}">
                             <button class="post__card--continue">continue reading...</button>
                         </router-link>
-                        <div class="">
-                            <div class="post__card--datetime">created {{ post.created_at | formatDate}}</div>
-                            <div class="post__card--datetime">modified {{ post.modified_at | formatDate }}</div>
+                        <div class="flex-container">
+                            <div class="post__card--datetime mr-4">created: {{ post.created_at | formatDate}}</div>
+                            <div class="post__card--datetime">modified: {{ post.modified_at | formatDate }}</div>
                         </div>
 
                         <!-- admin interface -->
@@ -87,5 +90,15 @@
 
 <style lang="scss" scoped>
     @import '@/assets/scss/components/post.scss';
+
+    .flex-container {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .mr-4 {
+        margin-right: 40px;
+    }
 
 </style>

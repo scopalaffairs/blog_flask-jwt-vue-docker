@@ -2,13 +2,25 @@
 import datetime
 
 from marshmallow import fields, Schema
-
 from . import db
+
+# Base = declarative_base()
+
+
+# class HeaderImage(Base, Image):
+#     """
+#     Post Image model.
+#     """
+#
+#     __tablename__ = 'header_img'
+#
+#     owner_id = Column(db.Integer, db.ForeignKey('users.id'), primary_key=True)
+#     user = relationship('BlogpostModel')
 
 
 class BlogpostModel(db.Model):
     """
-    Blogpost Model
+    Blogpost Model.
     """
 
     __tablename__ = 'blogposts'
@@ -16,6 +28,7 @@ class BlogpostModel(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(128), nullable=False)
     category = db.Column(db.String(128), nullable=False)
+    header_img = db.Column(db.String(), nullable=True)
     contents = db.Column(db.Text, nullable=False)
     owner_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     created_at = db.Column(db.DateTime)
@@ -24,6 +37,7 @@ class BlogpostModel(db.Model):
     def __init__(self, data):
         self.title = data.get('title')
         self.category = data.get('category')
+        self.header_img = data.get('header_img')
         self.contents = data.get('contents')
         self.owner_id = data.get('owner_id')
         self.created_at = datetime.datetime.utcnow()
@@ -62,6 +76,7 @@ class BlogpostSchema(Schema):
     id = fields.Int(dump_only=True)
     title = fields.Str(required=True)
     category = fields.Str(required=True)
+    header_img = fields.Str(required=False)
     contents = fields.Str(required=True)
     owner_id = fields.Int(required=True)
     created_at = fields.DateTime(dump_only=True)

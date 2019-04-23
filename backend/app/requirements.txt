@@ -5,6 +5,7 @@ flask-cors
 flask-migrate
 flask-script
 flask-sqlalchemy
+sqlalchemy-imageattach
 marshmallow
 pytest
 gunicorn

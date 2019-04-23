@@ -12,6 +12,21 @@
                 <option>Audio</option>
             </select>
 
+            <div>Header Image:</div>
+            <image-input v-model="avatar">
+                <div slot="activator">
+                    <div size="150px" v-if="!avatar" class="grey lighten-3 mb-3">
+                        <span>Click to add avatar</span>
+                    </div>
+                    <div size="150px" v-else class="mb-3">
+                        <img :src="avatar.imageURL" alt="avatar">
+                    </div>
+                </div>
+            </image-input>
+
+
+            <br/>
+            <div>Content:</div>
             <template>
                 <div class="editor">
                     <editor-menu-bar :editor="editor">
@@ -174,11 +189,13 @@
         Underline,
     } from 'tiptap-extensions'
     import Carousel from './Carousel.js'
+    import ImageInput from "../../../components/image-input";
 
     export default {
 
         name: 'dashboard',
         components: {
+            ImageInput: ImageInput,
             EditorMenuBar,
             EditorContent,
             AppIcon,
@@ -188,6 +205,11 @@
                 title: '',
                 category: '',
                 contents: null,
+                header_img: null,
+                avatar: null,
+                saving: false,
+                saved: false,
+
                 editor: new Editor({
                     extensions: [
                         new Blockquote(),
@@ -217,21 +239,38 @@
         beforeDestroy() {
             this.editor.destroy()
         },
+        watch: {
+            avatar: {
+                handler: function () {
+                    this.saved = false
+                },
+                deep: true
+            }
+        },
         methods: {
-            showImagePrompt(command) {
-                const src = prompt('Enter the url of your image here')
-                if (src !== null) {
-                    command({src})
-                }
+            uploadImage() {
+                this.saving = true
+                setTimeout(() => this.savedAvatar(), 1000)
             },
+            savedAvatar() {
+                this.saving = false
+                this.saved = true
+            },
+            // showImagePrompt(command) {
+            //     const src = prompt('Enter the url of your image here')
+            //     if (src !== null) {
+            //         command({src})
+            //     }
+            // },
             createPost() {
                 let post = {
                     title: this.title,
                     category: this.category,
+                    // header_img: this.avatar, todo: sqlalchemy-imageattach s3 setup and attach images froms storage
                     contents: this.editor.getHTML()
                 }
 
-                console.log("output", this.title, this.editor)
+                console.log("output", this.editor);
                 let token = localStorage.getItem('token');
                 axios({
                     method: 'POST',

@@ -7,7 +7,7 @@
 
 
 //Timing
-$transition-time: 1s;
+$transition-time: .3s;
 
 //Border
 $borderRadius: 1px;
@@ -20,11 +20,11 @@ $color-form-input: #22292f;
 
 
 //Buttons
-$btn-primary-color: red;
-$btn-primary-bg: lightblue;
+$btn-primary-color: #555;
+$btn-primary-bg: #c0d5e6;
 $btn-primary-border-color: #bbb;
 $btn-primary-hover-color: #333;
-$btn-primary-hover-bg: transparent;
+$btn-primary-hover-bg: #eaf6ff;
 $btn-primary-hover-border-color: #888;
 $btn-primary-active-color: #111;
 $btn-primary-active-bg: transparent;
