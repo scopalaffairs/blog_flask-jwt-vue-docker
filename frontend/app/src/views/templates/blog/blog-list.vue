@@ -3,13 +3,18 @@
         <fetch-json url="http://localhost:5000/api/v1/blogposts">
             <div class="" slot-scope="{ response: posts, loading }">
                 <h1 class=""></h1>
+                <template>
+                    <v-autocomplete :items="posts" v-model="post" :get-label="getLabel" :component-item='template'
+                                    @update-items="updateItems">
+                    </v-autocomplete>
+                </template>
                 <div v-if="loading" class="text-grey-darker">
                     Loading...
                 </div>
                 <div v-else>
                     <div class="post__card" v-for="post in posts" v-bind:key="post.id">
                         <div class="post__card--image">
-                                <img :src="post.header_img"/>
+                            <img :src="post.header_img"/>
                         </div>
                         <div class="post__card--category">{{ post.category }}</div>
                         <div class="post__card--title">{{ post.title }}</div>
@@ -47,11 +52,14 @@
     import axios from 'axios'
     import moment from 'moment'
     import Truncate from 'truncate'
+    import ItemTemplate from './ItemTemplate.vue'
+    import VAutocomplete from 'v-autocomplete'
 
 
     export default {
         components: {
-            FetchJson
+            FetchJson,
+            VAutocomplete
         },
         data() {
             return {posts: []}
@@ -62,6 +70,14 @@
             })
         },
         methods: {
+            getLabel(post) {
+                return post.name
+            },
+            updateItems(text) {
+                yourGetItemsMethod(text).then((response) => {
+                    this.post = response
+                })
+            },
             truncate: function (description) {
                 return Truncate(description, 140)
             },

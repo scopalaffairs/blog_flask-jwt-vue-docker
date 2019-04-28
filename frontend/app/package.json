@@ -26,6 +26,7 @@
         "tiptap-editor": "^1.1.4",
         "tiptap-extensions": "^1.14.0",
         "truncate": "^2.0.1",
+        "v-autocomplete": "^1.8.2",
         "vue": "^2.6.10",
         "vue-axios": "^2.1.4",
         "vue-carousel": "^0.18.0",
