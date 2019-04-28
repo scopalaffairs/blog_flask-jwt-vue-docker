@@ -34,7 +34,7 @@ services:
         restart: always
         image: postgres
         volumes:
-            - ./postgresql:/var/lib/postgresql
+            - ./postgresql/data:/var/lib/postgresql/data
         ports:
             - "5432:5432"
         environment:
