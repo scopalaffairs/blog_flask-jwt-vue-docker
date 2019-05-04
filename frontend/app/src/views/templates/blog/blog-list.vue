@@ -3,15 +3,16 @@
         <fetch-json url="http://localhost:5000/api/v1/blogposts">
             <div class="" slot-scope="{ response: posts, loading }">
                 <h1 class=""></h1>
-                <template>
-                    <v-autocomplete :items="posts" v-model="post" :get-label="getLabel" :component-item='template'
-                                    @update-items="updateItems">
-                    </v-autocomplete>
-                </template>
                 <div v-if="loading" class="text-grey-darker">
                     Loading...
                 </div>
                 <div v-else>
+                    <template>
+                        <v-autocomplete :items="posts" v-model="post" :get-label="getLabel"
+                                        :component-item='template'
+                                        @update-items="updateItems">
+                        </v-autocomplete>
+                    </template>
                     <div class="post__card" v-for="post in posts" v-bind:key="post.id">
                         <div class="post__card--image">
                             <img :src="post.header_img"/>
@@ -52,7 +53,6 @@
     import axios from 'axios'
     import moment from 'moment'
     import Truncate from 'truncate'
-    import ItemTemplate from './ItemTemplate.vue'
     import VAutocomplete from 'v-autocomplete'
 
 
@@ -62,7 +62,10 @@
             VAutocomplete
         },
         data() {
-            return {posts: []}
+            return {
+                posts: [],
+                post: ["start"]
+            }
         },
         computed: {
             ...mapGetters('auth', {
@@ -71,16 +74,17 @@
         },
         methods: {
             getLabel(post) {
-                return post.name
+                return post.title
             },
             updateItems(text) {
-                yourGetItemsMethod(text).then((response) => {
-                    this.post = response
+                this.post = posts.filter((post) => {
+                    return (new RegExp(text.toLowerCase())).test(post.title.toLowerCase())
                 })
             },
             truncate: function (description) {
                 return Truncate(description, 140)
-            },
+            }
+            ,
             deletePost: function (post) {
                 let token = localStorage.getItem('token');
                 console.log("delete", post.id);
@@ -89,7 +93,8 @@
                     url: 'http://localhost:5000/api/v1/blogposts/' + post.id,
                     headers: {
                         'api-token': token,
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
+                        'Access-Control-Allow-Origin': '*'
                     }
                 })
             }
@@ -100,7 +105,8 @@
                     return moment(String(value)).format('MM/DD/YYYY hh:mm')
                 }
             }
-        },
+        }
+        ,
     }
 </script>
 

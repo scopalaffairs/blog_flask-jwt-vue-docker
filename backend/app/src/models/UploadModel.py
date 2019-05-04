@@ -1,30 +1,26 @@
-# src/models/Blogpost.py
-import datetime
+# src/models/UploadMediaModel.py
 
+import datetime
 from marshmallow import fields, Schema
+
 from . import db
 
-class BlogpostModel(db.Model):
+
+class UploadModel(db.Model):
     """
-    Blogpost Model.
+    Upload Image Model.
     """
 
-    __tablename__ = 'blogposts'
+    __tablename__ = 'upload'
 
-    id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(128), nullable=False)
-    category = db.Column(db.String(128), nullable=False)
-    header_img = db.Column(db.String(), nullable=True)
-    contents = db.Column(db.Text, nullable=False)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    data = db.Column(db.String(), nullable=True)
     owner_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     created_at = db.Column(db.DateTime)
     modified_at = db.Column(db.DateTime)
 
     def __init__(self, data):
-        self.title = data.get('title')
-        self.category = data.get('category')
-        self.header_img = data.get('header_img')
-        self.contents = data.get('contents')
+        self.data = data.get('data')
         self.owner_id = data.get('owner_id')
         self.created_at = datetime.datetime.utcnow()
         self.modified_at = datetime.datetime.utcnow()
@@ -44,26 +40,23 @@ class BlogpostModel(db.Model):
         db.session.commit()
 
     @staticmethod
-    def get_all_blogposts():
-        return BlogpostModel.query.all()
+    def get_all_media():
+        return UploadModel.query.all()
 
     @staticmethod
-    def get_one_blogpost(id):
-        return BlogpostModel.query.get(id)
+    def get_one_medium(id):
+        return UploadModel.query.get(id)
 
     def __repr__(self):
         return '<id {}>'.format(self.id)
 
 
-class BlogpostSchema(Schema):
+class UploadSchema(Schema):
     """
-    Blogpost Schema
+    Image Upload Schema
     """
     id = fields.Int(dump_only=True)
-    title = fields.Str(required=True)
-    category = fields.Str(required=True)
-    header_img = fields.Str(required=False)
-    contents = fields.Str(required=True)
+    data = fields.Str(required=False)
     owner_id = fields.Int(required=True)
     created_at = fields.DateTime(dump_only=True)
     modified_at = fields.DateTime(dump_only=True)

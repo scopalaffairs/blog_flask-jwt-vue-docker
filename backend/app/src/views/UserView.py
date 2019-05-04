@@ -1,9 +1,10 @@
 # /src/views/UserView
 
-from flask import request, json, Response, Blueprint, g
+from flask import request, Blueprint, g
 from flask_cors import cross_origin
 
 from ..auth.Authentication import Auth
+from ..functions.responses import custom_response
 from ..models.UserModel import UserModel, UserSchema
 
 user_api = Blueprint('user_api', __name__)
@@ -126,14 +127,3 @@ def login():
     token = Auth.generate_token(ser_data.get('id'))
 
     return custom_response({'token': token, 'success': True}, 200)
-
-
-def custom_response(res, status_code):
-    """
-    Custom Response Function
-    """
-    return Response(
-        mimetype="application/json",
-        response=json.dumps(res),
-        status=status_code
-    )

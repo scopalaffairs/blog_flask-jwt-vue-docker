@@ -1,8 +1,9 @@
 # /src/views/BlogpostView.py
-from flask import request, g, Blueprint, json, Response
+from flask import request, g, Blueprint
 from flask_cors import cross_origin
 
 from ..auth.Authentication import Auth
+from ..functions.responses import custom_response
 from ..models.BlogpostModel import BlogpostModel, BlogpostSchema
 
 blogpost_api = Blueprint('blogpost_api', __name__)
@@ -86,14 +87,3 @@ def delete(blogpost_id):
 
     post.delete()
     return custom_response({'message': 'deleted'}, 204)
-
-
-def custom_response(res, status_code):
-    """
-    Custom Response Function
-    """
-    return Response(
-        mimetype="application/json",
-        response=json.dumps(res),
-        status=status_code
-    )
