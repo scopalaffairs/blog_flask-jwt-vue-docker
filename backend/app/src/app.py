@@ -2,7 +2,7 @@
 
 import os
 
-from flask import Flask
+from flask import Flask, request
 from flask_cors import CORS
 from redis import Redis
 
@@ -19,7 +19,7 @@ def create_app(env_name):
     """
     # Filesystem
     APP_ROOT = os.path.dirname(os.path.abspath(__file__))
-    UPLOAD_FOLDER = os.path.join(APP_ROOT, 'uploads')
+    UPLOAD_FOLDER = 'uploads/'
 
     # app initialization
     app = Flask(__name__)
@@ -42,6 +42,14 @@ def create_app(env_name):
     def hello():
         redis.incr('hits')
         return 'This Compose/Flask demo has been viewed %s time(s).' % redis.get('hits')
+
+    @app.route('/feedback', methods=['POST'])
+    def log_feedback():
+        with open(UPLOAD_FOLDER+"feedback.txt", "a") as fo:
+            fo.write(request.data.decode("utf-8"))
+            print(request.data.decode("utf-8"))
+            fo.write('\n')
+        return 'Got it!'
 
     @app.route('/', methods=['GET'])
     def index():

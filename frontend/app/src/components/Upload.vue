@@ -5,9 +5,9 @@
         <picture-input ref="pictureInput" @change="onChange" width="100" height="100" margin="8"
                        accept="image/jpeg,image/png" size="10"
                        :removable="true" :customStrings="{
-        upload: '',
-        drag: 'Drag an Image'
-      }">
+                upload: '',
+                drag: 'Drag an Image'
+              }">
         </picture-input>
     </div>
 </template>
@@ -33,17 +33,17 @@
                     method: 'POST',
                     url: path,
                     headers: {
-                        'api-token': token,
-                        'Content-Type': 'application/json'
+                        // 'api-token': token,
+                        'Content-Type': 'multipart/form-data'
                     },
-                    data: data
+                    data
                 });
-                console.log('sendUploadToBackend', data)
+                console.log('sendUploadToBackend')
             },
             onChange(image) {
                 console.log('picture changed!');
                 if (this.$refs.pictureInput.image) {
-                    console.log('Picture is loaded.', this.$refs.pictureInput.image);
+                    console.log('Picture is loaded.');
                     // this.sendUploadToBackend(this.$refs.pictureInput.file.name, this.$refs.pictureInput.image)
                     this.sendUploadToBackend(this.$refs.pictureInput.image)
                 } else {
@@ -51,6 +51,7 @@
                 }
             },
         }
+
     }
 </script>
 

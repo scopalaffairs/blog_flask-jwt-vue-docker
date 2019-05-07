@@ -5,6 +5,8 @@ flask-cors
 flask-migrate
 flask-script
 flask-sqlalchemy
+flask-uploads
+
 sqlalchemy-imageattach
 marshmallow
 werkzeug
