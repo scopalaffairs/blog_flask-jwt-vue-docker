@@ -265,3 +265,6 @@ pyvenv.cfg
 pip-selfcheck.json
 
 postgresql
+backend/config.py
+docker/redis/data/dump.rdb
+frontend/app/config.js
