@@ -1,4 +1,4 @@
-[![build status][4]][5]
+![Docker Build Status](https://img.shields.io/docker/build/scopalaffairs/cms_blog_flask-jwt-vue-docker)
 ## Flask/Vue Boilerplate Setup 
 
 ### with POSTGRESQL
