@@ -1,8 +1,9 @@
-# Flask/Vue Boilerplate Setup 
+[![build status][4]][5]
+## Flask/Vue Boilerplate Setup 
 
-## with POSTGRESQL
-## bundled via Docker Compose
-## exposed via nginx
+### with POSTGRESQL
+### bundled via Docker Compose
+### exposed via nginx
 
 
 ----
