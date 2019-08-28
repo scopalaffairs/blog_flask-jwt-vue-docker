@@ -1,4 +1,4 @@
-![https://img.shields.io/badge/build-passing-brightgreen]
+[![Generic badge](https://img.shields.io/badge/build-passing-brightgreen)](https://shields.io/)
 
 ### Flask/Vue Boilerplate Setup 
 
