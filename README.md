@@ -1,9 +1,9 @@
+![https://img.shields.io/badge/build-passing-brightgreen]
 
+### Flask/Vue Boilerplate Setup 
 
-## Flask/Vue Boilerplate Setup 
-
-### with POSTGRESQL
-### bundled via Docker Compose
+#### with POSTGRESQL
+#### bundled via Docker Compose
 
 
 ----
